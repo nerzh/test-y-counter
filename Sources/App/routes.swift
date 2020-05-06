@@ -1,12 +1,7 @@
 import Vapor
 
-func routes(_ app: Application) throws {
-
-    app.get { req in
-        return "It works!"
-    }
-
-    app.get("hello") { req -> String in
-        return "Hello, world!"
-    }
+/// Register your application's routes here.
+public func routes(_ router: Router) throws {
+    let countController = CountController()
+    router.post("increment", use: countController.increment)
 }
